@@ -26,8 +26,10 @@ export default {
             })
             yield console.log(call);
         },
-        *netRequest(payload, { put, call }) {
+        *netRequest(payload, { put, call, select }) {
             let res = yield call(req.topics)
+            let a=yield select(state=>state.testModel)
+            yield console.log(a)
             if (res.data) {
                 yield put({
                     type: 'netRequestHandler',
